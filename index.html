@@ -260,21 +260,17 @@
   @media print {
     html, body { background: white; margin: 0; padding: 0; }
     .page {
-      margin: 0;
+      margin: 0 !important;
       box-shadow: none;
       page-break-after: always;
       break-after: page;
-      page-break-inside: avoid;
-      break-inside: avoid;
       width: 210mm;
-      height: 297mm;
       min-height: 297mm;
-      max-height: 297mm;
-      overflow: hidden;
     }
     .page:last-of-type { page-break-after: auto; break-after: auto; }
     .part-divider { margin: 0; padding: 60mm 20mm; min-height: calc(297mm - 44mm); }
     .toc { margin: 0 !important; padding: 22mm 18mm !important; min-height: auto; }
+    table, tr, td, th { page-break-inside: avoid; break-inside: avoid; }
   }
 </style>
 </head>
