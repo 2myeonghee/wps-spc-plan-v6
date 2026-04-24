@@ -256,10 +256,25 @@
   .mono { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
 
   /* --- PRINT --- */
+  @page { size: A4; margin: 0; }
   @media print {
-    html, body { background: white; }
-    .page { margin: 0; box-shadow: none; page-break-after: always; }
-    @page { size: A4; margin: 0; }
+    html, body { background: white; margin: 0; padding: 0; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+    }
+    .page:last-of-type { page-break-after: auto; break-after: auto; }
+    .part-divider { margin: 0; padding: 60mm 20mm; min-height: calc(297mm - 44mm); }
+    .toc { margin: 0 !important; padding: 22mm 18mm !important; min-height: auto; }
   }
 </style>
 </head>
