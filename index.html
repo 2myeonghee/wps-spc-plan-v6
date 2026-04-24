@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>WPS 아파트 단지 사업 합작법인(SPC) 설립 기획서 v6.0</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+  :root {
+    --ink: #111111;
+    --ink-soft: #2a2a2a;
+    --ink-mute: #555555;
+    --line: #d8d8d8;
+    --line-soft: #ececec;
+    --bg: #ffffff;
+    --bg-soft: #f6f6f6;
+    --bg-cover: #151515;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    font-size: 10.5pt;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 22mm 18mm;
+    margin: 10mm auto;
+    background: var(--bg);
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+
+  /* --- COVER --- */
+  .cover {
+    background: var(--bg-cover);
+    color: #ffffff;
+    padding: 30mm 20mm;
+  }
+  .cover .meta {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    row-gap: 10px;
+    font-size: 9.5pt;
+    color: #cfcfcf;
+    max-width: 340px;
+    margin-bottom: 55mm;
+  }
+  .cover .meta dt { color: #8f8f8f; font-weight: 400; letter-spacing: 0.05em; }
+  .cover .meta dd { color: #e6e6e6; font-weight: 500; }
+  .cover .meta .row { display: contents; }
+  .cover .meta .row + .row dt, .cover .meta .row + .row dd { border-top: 1px solid #333; padding-top: 8px; margin-top: -2px; }
+
+  .cover .kicker {
+    font-size: 8.5pt;
+    letter-spacing: 0.35em;
+    color: #8f8f8f;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .cover h1 {
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .cover .sub {
+    font-size: 11pt;
+    color: #c0c0c0;
+    font-weight: 400;
+    margin-bottom: 40mm;
+  }
+  .cover .sign {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 480px;
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+  }
+  .cover .sign > div { padding: 14px 12px; border-right: 1px solid #3a3a3a; min-height: 64px; }
+  .cover .sign > div:last-child { border-right: none; }
+  .cover .sign .lbl { font-size: 8pt; letter-spacing: 0.2em; color: #8f8f8f; margin-bottom: 14px; }
+  .cover .sign .val { font-size: 10pt; color: #e6e6e6; font-weight: 600; }
+
+  /* --- TOC --- */
+  .toc-title { font-size: 9pt; letter-spacing: 0.3em; color: var(--ink-mute); margin-bottom: 20px; }
+  .toc { background: var(--bg-soft); padding: 24mm 18mm; margin: -22mm -18mm; min-height: calc(297mm - 44mm); }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--line);
+    font-size: 11pt;
+  }
+  .toc li .num { width: 42px; color: var(--ink-mute); font-feature-settings: "tnum"; }
+  .toc li .name { flex: 1; }
+  .toc li.part { margin-top: 22px; border-bottom: 1px solid var(--ink); padding: 16px 0 10px; font-weight: 700; font-size: 9pt; letter-spacing: 0.25em; color: var(--ink); }
+  .toc li.part .num { display: none; }
+  .toc li.new .name::after { content: "신규"; font-size: 8pt; letter-spacing: 0.1em; margin-left: 10px; padding: 2px 8px; border: 1px solid var(--ink); color: var(--ink); font-weight: 600; }
+
+  /* --- SECTION --- */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 18px;
+  }
+  .section-head .no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: var(--ink);
+    color: #ffffff;
+    font-size: 10pt;
+    font-weight: 700;
+    font-feature-settings: "tnum";
+  }
+  .section-head h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  .subhead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 22px 0 10px;
+  }
+  .subhead::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: var(--ink);
+  }
+
+  p { margin-bottom: 10px; }
+  p + p { margin-top: 2px; }
+  .lead { margin-bottom: 14px; }
+
+  /* --- TABLE --- */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 10pt; }
+  thead th {
+    background: var(--bg-soft);
+    text-align: left;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-size: 9.5pt;
+    letter-spacing: 0.01em;
+  }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
+  tbody tr.total td { font-weight: 700; background: #fafafa; }
+
+  /* --- CARD / CALLOUT --- */
+  .card {
+    border: 1px solid var(--line);
+    padding: 16px 18px;
+    margin: 10px 0 14px;
+  }
+  .card .tag {
+    display: inline-block;
+    background: var(--ink);
+    color: #ffffff;
+    padding: 3px 10px;
+    font-size: 8.5pt;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .card h4 { font-size: 11.5pt; font-weight: 700; margin-bottom: 10px; }
+
+  .callout {
+    border-left: 3px solid var(--ink);
+    padding: 12px 16px;
+    background: var(--bg-soft);
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .callout .k { font-size: 8.5pt; letter-spacing: 0.2em; font-weight: 700; color: var(--ink); display: block; margin-bottom: 6px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  ul.dash { list-style: none; padding-left: 0; }
+  ul.dash li { padding-left: 14px; position: relative; margin-bottom: 5px; font-size: 10pt; }
+  ul.dash li::before { content: "—"; position: absolute; left: 0; color: var(--ink-mute); }
+
+  ol.num { padding-left: 18px; }
+  ol.num li { margin-bottom: 5px; font-size: 10pt; }
+
+  .footnote {
+    font-size: 9pt;
+    color: var(--ink-mute);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* --- PART DIVIDER --- */
+  .part-divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60mm 20mm;
+    background: var(--bg);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 40mm 0;
+  }
+  .part-divider .lbl { font-size: 9pt; letter-spacing: 0.35em; color: var(--ink-mute); margin-bottom: 14px; }
+  .part-divider h2 { font-size: 30pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px; }
+  .part-divider p { font-size: 12pt; color: var(--ink-soft); max-width: 130mm; line-height: 1.65; }
+
+  .pagefoot {
+    position: absolute;
+    bottom: 10mm;
+    left: 18mm;
+    right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    padding-top: 6px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  strong { font-weight: 700; }
+  .u { text-decoration: underline; text-underline-offset: 3px; }
+  .mono { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+
+  /* --- PRINT --- */
+  @media print {
+    html, body { background: white; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================= -->
+<!-- COVER -->
+<!-- ============================= -->
+<section class="page cover">
+  <dl class="meta">
+    <div class="row"><dt>문서 번호</dt><dd>BIZ-2026-WPS-006</dd></div>
+    <div class="row"><dt>문서 등급</dt><dd>대외비 (CONFIDENTIAL)</dd></div>
+    <div class="row"><dt>작성 일자</dt><dd>2026년 4월 24일</dd></div>
+    <div class="row"><dt>버전</dt><dd>v6.0 (MYFIT 편입 개정판)</dd></div>
+    <div class="row"><dt>작성 부서</dt><dd>전략기획팀</dd></div>
+  </dl>
+
+  <div class="kicker">Strategy Document · Special Purpose Company</div>
+  <h1>WPS 아파트 단지 사업<br>합작법인(SPC) 설립 기획서</h1>
+  <div class="sub">아파트너 × 법무법인 더 에이치 황해 &nbsp;|&nbsp; 커뮤니티 운영사 편입 확장안</div>
+
+  <div class="sign">
+    <div><div class="lbl">작 성</div><div class="val">전략기획팀</div></div>
+    <div><div class="lbl">검 토</div><div class="val">&nbsp;</div></div>
+    <div><div class="lbl">승 인</div><div class="val">&nbsp;</div></div>
+    <div><div class="lbl">&nbsp;</div><div class="val">&nbsp;</div></div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- TOC -->
+<!-- ============================= -->
+<section class="page">
+  <div class="toc">
+    <div class="toc-title">TABLE OF CONTENTS</div>
+    <ol>
+      <li class="part"><span class="name">PART I · WPS 카페 사업 구조</span></li>
+      <li><span class="num">01</span><span class="name">왜 WPS인가 — 시장 기회와 SPC의 역할</span></li>
+      <li><span class="num">02</span><span class="name">SPC 구조 — 누가, 어떻게 운영하는가</span></li>
+      <li><span class="num">03</span><span class="name">스타벅스 원두가 아파트에 들어오는 경로</span></li>
+      <li><span class="num">04</span><span class="name">메뉴와 가격 — 타 단지 실제 데이터 기반</span></li>
+      <li><span class="num">05</span><span class="name">두 가지 판매 모델 — 쿠폰 vs 현금</span></li>
+      <li><span class="num">06</span><span class="name">돈이 얼마나 남는가 — 단지·SPC 손익</span></li>
+      <li><span class="num">07</span><span class="name">초기 투자 — 누가, 얼마를 부담하는가</span></li>
+      <li><span class="num">08</span><span class="name">단지 진입 옵션 5가지</span></li>
+      <li><span class="num">09</span><span class="name">SPC가 버는 돈 — 자산 회수와 성장 경로</span></li>
+      <li><span class="num">10</span><span class="name">이게 합법인가 — 법률 검토</span></li>
+
+      <li class="part"><span class="name">PART II · 커뮤니티 운영사 편입 (개정 추가)</span></li>
+      <li class="new"><span class="num">11</span><span class="name">마이핏(MYFIT) 사례 — 벤치마킹과 인수 타당성</span></li>
+      <li class="new"><span class="num">12</span><span class="name">딜 구조 — SPC 지분 투자 스킴</span></li>
+      <li class="new"><span class="num">13</span><span class="name">확장 비전 — 하이엔드 단지 토탈 서비스</span></li>
+
+      <li class="part"><span class="name">PART III · 실행</span></li>
+      <li><span class="num">14</span><span class="name">추진 로드맵 (MYFIT 편입 반영)</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- 01 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">01</span><h2>왜 WPS인가 — 시장 기회와 SPC의 역할</h2></div>
+
+  <p class="lead">전국 3,000세대 이상 아파트 단지는 약 <strong>1,100개</strong>입니다. 이 단지들에는 클럽하우스나 커뮤니티 센터 같은 유휴 공간이 있지만, 전문 F&amp;B 브랜드가 들어가 있는 곳은 거의 없습니다. 이유는 단순합니다. <strong>공동주택관리법이 커뮤니티 시설 운영을 입주자대표회의(입대의) 주도로 하도록 규정</strong>하고 있어서, 외부 사업자가 직접 운영할 수가 없기 때문입니다.</p>
+
+  <p>WPS SPC는 이 구조를 역으로 활용합니다. 입대의가 운영 주체가 되고, SPC는 뒤에서 머신을 넣고 원두를 공급하고 운영을 교육하고 정산을 관리하는 <strong>위탁 운영 파트너</strong> 역할을 합니다. 스타벅스 브랜드 커피를 단지 안에서 3,300원에 마실 수 있고, 단지는 매달 수백만 원의 수익을 올리고, SPC는 수수료로 먹는 구조입니다.</p>
+
+  <div class="subhead">SPC가 하는 3가지</div>
+  <table>
+    <thead><tr><th style="width:28%">역할</th><th>상세</th></tr></thead>
+    <tbody>
+      <tr><td><strong>① 단지에 돈을 벌어준다</strong></td><td>유휴 공간을 카페로 전환 → 단지 잡수입 월 수백만 원 창출. 관리비 절감 또는 장충금 적립 가능.</td></tr>
+      <tr><td><strong>② 아파트너 앱을 키운다</strong></td><td>커피 주문·쿠폰·관리비 정산을 앱 안에서 처리 → DAU가 올라가고 앱이 생활 플랫폼으로 진화.</td></tr>
+      <tr><td><strong>③ 황해에 단지를 연결한다</strong></td><td>카페가 들어간 단지는 황해의 법률 서비스 채널이 됨 → 하자 소송, 입대의 자문, 집단 등기 수임 연결.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">시장 규모</div>
+  <table>
+    <thead><tr><th style="width:55%">구분</th><th>단지 수</th></tr></thead>
+    <tbody>
+      <tr><td>잠재 시장 (3,000세대 이상)</td><td>약 1,100개 단지</td></tr>
+      <tr><td>확장 시장 (2,000세대 이상)</td><td>약 2,500개 단지</td></tr>
+      <tr><td>현재 WPS 입점</td><td>헬리오시티 외 극소수 → <strong>선점 기회</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>01 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 02 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">02</span><h2>SPC 구조 — 누가, 어떻게 운영하는가</h2></div>
+
+  <div class="subhead">대표이사: 성현우</div>
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag">현직 ①</span>
+      <h4>법무법인 더 에이치 황해 국장</h4>
+      <ul class="dash">
+        <li>200개+ 수임 단지와 직접 신뢰 관계</li>
+        <li>입찰~계약 체결 법률 원스톱 지원</li>
+        <li>입대의 설득·의결 추진 경험</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">현직 ②</span>
+      <h4>아파트너 이사</h4>
+      <ul class="dash">
+        <li>앱 전략·기능 기획 총괄</li>
+        <li>WPS ↔ 앱 연동 설계·실행 주도</li>
+        <li>앱 주문·쿠폰·관리비 정산 시스템 구축</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="subhead">지분 구조 (WPS 카페 SPC 기준)</div>
+  <table>
+    <thead><tr><th>주주</th><th>지분</th><th>출자금</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td><strong>아파트너</strong></td><td>70%</td><td>7,000만원</td><td>앱 플랫폼, 전국 영업망, 자본 주도</td></tr>
+      <tr><td><strong>법무법인 더 에이치 황해</strong></td><td>30%</td><td>3,000만원</td><td>200개+ 단지 네트워크, 입찰·법률, 대표이사 파견</td></tr>
+    </tbody>
+  </table>
+  <p class="footnote">※ 헬리오시티 단지용 커뮤니티 운영사 편입 SPC는 별도 지분 구조를 따릅니다 — 12장 참조.</p>
+
+  <div class="subhead">SPC 고정비 — 월 400만원</div>
+  <p>대표이사 급여 없음. 영업 인력 별도 없음(양측 채널 공유). 카페 운영 인력은 단지가 고용하거나 SPC가 직접 고용 후 단지에 파견하는 방식 중 선택합니다.</p>
+  <table>
+    <thead><tr><th style="width:25%">항목</th><th style="width:20%">월 비용</th><th>설명</th></tr></thead>
+    <tbody>
+      <tr><td>영업 경비</td><td>150만원</td><td>단지 방문, 입대의 공청회, 계약 협의</td></tr>
+      <tr><td>사무실 임차</td><td>100만원</td><td>공유오피스</td></tr>
+      <tr><td>회계·세무·외주</td><td>150만원</td><td>월 기장, 정산 보고서, 계약서 검토</td></tr>
+      <tr class="total"><td>합계</td><td>400만원</td><td>50개 단지에서도 동일</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>02 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 03 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">03</span><h2>스타벅스 원두가 아파트에 들어오는 경로</h2></div>
+
+  <table>
+    <thead><tr><th style="width:8%">순서</th><th style="width:22%">주체</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>스타벅스 본사 → 네슬레</td><td>$71.5억 라이선스 계약. 네슬레가 매장 바깥 모든 채널에서 스타벅스 커피를 팔 수 있는 권리 보유.</td></tr>
+      <tr><td>2</td><td>네슬레 코리아</td><td>한국 WPS(We Proudly Serve) 프로그램 총괄. 브랜드 가이드라인 관리.</td></tr>
+      <tr><td>3</td><td>오진양행</td><td>네슬레 공식 파트너사. WPS 전용 에스프레소 머신(서모플랜 Standard) 판매 + 스타벅스 원두 정기 공급.</td></tr>
+      <tr><td>4</td><td><strong>WPS SPC</strong></td><td>오진양행에서 머신을 직접 구매하여 SPC 자산으로 보유. 단지에 머신을 설치하고 운영을 교육하고 원두를 배송하고 매출을 정산한다.</td></tr>
+      <tr><td>5</td><td>아파트 단지 (입대의)</td><td>카페 운영 주체. 운영 인력 고용(또는 SPC 파견 인력 활용). 매출은 단지 잡수입. SPC에 위탁 수수료 지급.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="k">OPERATIONAL NOTE</span>
+    WPS 머신은 <strong>에스프레소 추출·우유 스팀·음료 완성이 표준화</strong>되어 있어 바리스타 자격 없이 1~2일 교육 후 즉시 운용 가능합니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>03 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 04 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">04</span><h2>메뉴와 가격 — 타 단지 실제 데이터 기반</h2></div>
+
+  <p class="lead">타 단지 WPS 매장의 실제 판매 가격을 확인하고, <strong>전 메뉴 100원 인상</strong>하여 적용합니다.</p>
+
+  <table>
+    <thead><tr><th>카테고리</th><th>메뉴</th><th>타 단지 가격</th><th>우리 적용가</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3">에스프레소</td><td>아이스 아메리카노 Tall</td><td>3,200원</td><td><strong>3,300원</strong></td></tr>
+      <tr><td>아이스 카페라떼·카푸치노 Tall</td><td>3,700원</td><td><strong>3,800원</strong></td></tr>
+      <tr><td>아이스 카라멜 마키아또 Tall</td><td>4,200원</td><td><strong>4,300원</strong></td></tr>
+      <tr><td>라떼</td><td>초코·그린티·오곡·밀크티 라떼</td><td>3,000원</td><td><strong>3,100원</strong></td></tr>
+      <tr><td>티·에이드</td><td>캐모마일·레몬에이드·복숭아아이스티 등</td><td>2,500원</td><td><strong>2,600원</strong></td></tr>
+      <tr><td>주스</td><td>딸기요거트·딸기바나나주스</td><td>3,800원</td><td><strong>3,900원</strong></td></tr>
+      <tr class="total"><td colspan="3">메뉴 믹스 가중 평균 판매가</td><td>3,440원</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">원가 구조 (더테라스 실측)</div>
+  <table>
+    <thead><tr><th>메뉴</th><th>원가총액</th><th>판매가</th><th>원가율</th><th>잔당 마진</th></tr></thead>
+    <tbody>
+      <tr><td>아메리카노 Tall</td><td>1,228원</td><td>3,300원</td><td>37.2%</td><td>2,072원</td></tr>
+      <tr><td>카페라떼 Tall</td><td>1,542원</td><td>3,800원</td><td>40.6%</td><td>2,258원</td></tr>
+      <tr><td>바닐라 라떼 Tall</td><td>2,244원</td><td>4,300원</td><td>52.2%</td><td>2,056원</td></tr>
+      <tr class="total"><td>믹스 평균</td><td>2,166원</td><td>3,440원</td><td>63.0%</td><td>1,274원</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>04 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 05 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">05</span><h2>두 가지 판매 모델 — 쿠폰 vs 현금</h2></div>
+
+  <p class="lead">단지마다 상황이 다릅니다. 관리비에 쿠폰 비용을 포함할 수 있는 단지와, 절대 안 되는 단지가 있습니다. 그래서 두 가지 모델을 준비합니다.</p>
+
+  <div class="card">
+    <span class="tag">A안 — 쿠폰 + 현금 병행</span>
+    <h4>관리비 포함 쿠폰 모델</h4>
+    <table>
+      <tbody>
+        <tr><td style="width:20%"><strong>쿠폰 단가</strong></td><td>2,500원/장 (아메리카노 3,300원 대비 <strong>24% 할인</strong>)</td></tr>
+        <tr><td><strong>세대당 지급</strong></td><td>월 3장 (세대당 7,500원)</td></tr>
+        <tr><td><strong>장점</strong></td><td>안정적 기본 매출, 높은 이용률 유도</td></tr>
+        <tr><td><strong>리스크</strong></td><td>관리비 인상 반발 가능</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="tag">B안 — 현금 100%</span>
+    <h4>관리비 무관 모델</h4>
+    <table>
+      <tbody>
+        <tr><td style="width:20%"><strong>판매 방식</strong></td><td>전량 현금·카드·앱 결제</td></tr>
+        <tr><td><strong>쿠폰</strong></td><td>없음 — 관리비에 일체 영향 없음</td></tr>
+        <tr><td><strong>장점</strong></td><td>관리비 반발 제로, 구조 단순</td></tr>
+        <tr><td><strong>리스크</strong></td><td>쿠폰 없으면 초기 이용률 낮을 수 있음</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subhead">운영 인력</div>
+  <p>운영 시간: 오전 7시 ~ 오후 8시 (13시간). 기본 구성은 <strong>정규직 1명(250만원) + 파트타임 1명(158만원) = 월 408만원</strong>입니다. 단지가 직접 고용하거나 SPC가 고용 후 단지에 파견하는 두 가지 방식 모두 가능합니다.</p>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>05 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 06 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">06</span><h2>돈이 얼마나 남는가 — 단지·SPC 손익</h2></div>
+
+  <p class="lead">인력: 정규직 1 + 파트타임 1 (408만원). SPC 수수료: 파일럿 15%. 재료비: 2,166원/잔.</p>
+
+  <div class="subhead">A안(쿠폰 2,500원) — 3,000세대 Normal</div>
+  <table>
+    <thead><tr><th>항목</th><th>계산 근거</th><th>금액</th></tr></thead>
+    <tbody>
+      <tr><td colspan="3"><em>판매량 — 세대당 3.5잔/월 = 10,500잔 (350잔/일)</em></td></tr>
+      <tr><td>쿠폰 선납 수입</td><td>3,000세대 × 3장 × 2,500원</td><td>2,250만원</td></tr>
+      <tr><td>현금 판매 수입</td><td>4,200잔 × 3,440원</td><td>1,444만원</td></tr>
+      <tr><td><strong>총 매출</strong></td><td></td><td><strong>3,694만원</strong></td></tr>
+      <tr><td>재료비</td><td>10,500잔 × 2,166원</td><td>2,274만원</td></tr>
+      <tr><td>인건비</td><td>정규1 + 파트1</td><td>408만원</td></tr>
+      <tr><td>운영비 (2%)</td><td></td><td>74만원</td></tr>
+      <tr><td>SPC 수수료 (15%)</td><td></td><td>554만원</td></tr>
+      <tr class="total"><td>단지 월 순수익</td><td></td><td>+384만원 ✓</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">B안(현금 100%) — 3,000세대 Normal</div>
+  <table>
+    <thead><tr><th>항목</th><th>계산 근거</th><th>금액</th></tr></thead>
+    <tbody>
+      <tr><td colspan="3"><em>판매량 — 10,500잔/월, 전량 현금</em></td></tr>
+      <tr><td>현금 판매 수입</td><td>10,500잔 × 3,440원</td><td>3,612만원</td></tr>
+      <tr><td><strong>총 매출</strong></td><td></td><td><strong>3,612만원</strong></td></tr>
+      <tr><td>재료비</td><td>10,500잔 × 2,166원</td><td>2,274만원</td></tr>
+      <tr><td>인건비</td><td>정규1 + 파트1</td><td>408만원</td></tr>
+      <tr><td>운영비 (2%)</td><td></td><td>72만원</td></tr>
+      <tr><td>SPC 수수료 (15%)</td><td></td><td>542만원</td></tr>
+      <tr class="total"><td>단지 월 순수익</td><td></td><td>+316만원 ✓</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>06 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 06b - 전체 시나리오 요약 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">06</span><h2>전체 시나리오 요약</h2></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">단지 규모</th>
+        <th rowspan="2">시나리오</th>
+        <th colspan="2">A안 (쿠폰)</th>
+        <th colspan="2">B안 (현금)</th>
+      </tr>
+      <tr>
+        <th>단지 순수익</th><th>SPC 수수료</th>
+        <th>단지 순수익</th><th>SPC 수수료</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="3">2,000세대</td><td>Worst (2.5잔)</td><td>−19만원</td><td>266만원</td><td>−63만원</td><td>258만원</td></tr>
+      <tr><td>Normal (3.0잔)</td><td><strong>+51만원</strong></td><td>318만원</td><td><strong>+6만원</strong></td><td>310만원</td></tr>
+      <tr><td>Best (4.0잔)</td><td><strong>+189만원</strong></td><td>421만원</td><td><strong>+143만원</strong></td><td>413만원</td></tr>
+      <tr><td rowspan="3">3,000세대</td><td>Worst (2.5잔)</td><td><strong>+178만원</strong></td><td>399만원</td><td><strong>+109만원</strong></td><td>387만원</td></tr>
+      <tr><td>Normal (3.5잔)</td><td><strong>+384만원</strong></td><td>554만원</td><td><strong>+316만원</strong></td><td>542만원</td></tr>
+      <tr><td>Best (5.0잔)</td><td><strong>+695만원</strong></td><td>786만원</td><td><strong>+626만원</strong></td><td>774만원</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="k">관찰</span>
+    3,000세대 이상은 최악 시나리오(2.5잔)에서도 단지·SPC 모두 흑자. 2,000세대 이하에서는 수요 회복력이 핵심 리스크가 됩니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>07 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 07 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">07</span><h2>초기 투자 — 누가, 얼마를 부담하는가</h2></div>
+
+  <div class="subhead">에스프레소 머신 — SPC 자산</div>
+  <table>
+    <thead><tr><th style="width:22%">항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1대 가격</td><td>3,000만원 (서모플랜 Standard + 설치비)</td></tr>
+      <tr><td>일 200잔 초과 시</td><td><strong>2대 필수</strong> (기기 과부하 방지)</td></tr>
+      <tr><td>자산 분류</td><td>SPC 유형자산 계상. 감가상각 5년, 잔존가치 20%(600만원/대).</td></tr>
+      <tr><td>계약 해지 시</td><td>머신 회수 → 다른 단지 재배치 또는 중고 매각 가능</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">초기 투자 부담 구조</div>
+  <table>
+    <thead><tr><th>항목</th><th>부담 주체</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><strong>에스프레소 머신</strong></td><td>SPC 전액 부담</td><td>SPC가 구매 후 자산화. 계약 해지 시 회수.</td></tr>
+      <tr><td><strong>인테리어</strong></td><td>단지 부담 (기본) 또는 SPC 부담 (옵션 E)</td><td>단지가 장충금·집수입으로 집행하거나, SPC가 대신 부담하고 수익으로 환수.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">단지 규모별 투자 비용</div>
+  <table>
+    <thead><tr><th>단지 규모</th><th>일 판매량</th><th>머신 (SPC)</th><th>인테리어 (단지)</th></tr></thead>
+    <tbody>
+      <tr><td>1,000세대</td><td>117잔/일</td><td>1대 / 3,000만원</td><td>3,000만원</td></tr>
+      <tr><td>1,700세대 (기준선)</td><td>198잔/일</td><td>1대 / 3,000만원</td><td>4,000만원</td></tr>
+      <tr><td>2,000세대</td><td>200잔/일</td><td>2대 / 6,000만원</td><td>4,500만원</td></tr>
+      <tr><td>3,000세대</td><td>350잔/일</td><td>2대 / 6,000만원</td><td>6,000만원</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>08 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 08 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">08</span><h2>단지 진입 옵션 5가지</h2></div>
+
+  <p class="lead">모든 단지가 같은 조건으로 시작할 필요는 없습니다. 단지 상황에 맞는 옵션을 제안합니다.</p>
+
+  <table>
+    <thead><tr><th style="width:20%">옵션</th><th>구조</th><th>단지 부담</th><th>SPC 부담</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Option A</strong><br>기본형</td>
+        <td>단지 인테리어 + SPC 머신</td>
+        <td>인테리어 전액<br>(장충금·집수입 집행)</td>
+        <td>머신 전액</td>
+        <td>가장 깔끔한 구조. 단지·SPC 모두 수익 즉시 수취.</td>
+      </tr>
+      <tr>
+        <td><strong>Option B</strong><br>수수료 면제형</td>
+        <td>첫 3개월 SPC 수수료 0원</td>
+        <td>인테리어 전액</td>
+        <td>머신 전액 + 3개월 수수료 면제</td>
+        <td>초기 정착 기간 단지 부담 최소화. 4개월차부터 15%.</td>
+      </tr>
+      <tr>
+        <td><strong>Option C</strong><br>SPC 일부 지원형</td>
+        <td>SPC가 인테리어 500~1,000만원 지원</td>
+        <td>인테리어 일부</td>
+        <td>머신 + 인테리어 일부</td>
+        <td>지원금은 계약 기간(2년) 수수료로 분할 환수.</td>
+      </tr>
+      <tr>
+        <td><strong>Option D</strong><br>수수료 변동제</td>
+        <td>매출 구간별 수수료 차등</td>
+        <td>인테리어 전액</td>
+        <td>머신 전액</td>
+        <td>매출 1,500만 이하: 10% / ~2,500만: 15% / 초과: 20%.</td>
+      </tr>
+      <tr>
+        <td><strong>Option E</strong><br>SPC 전액 투자형</td>
+        <td>SPC가 인테리어 전액 부담 → 단지 월 수익을 SPC가 회수 시까지 수취</td>
+        <td>0원</td>
+        <td>머신 + 인테리어 전액</td>
+        <td>3,000세대 기준: 단지 수익 316만원/월 × 약 19개월 = 6,000만원 회수. 회수 완료 후 단지에 수익 복귀.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">Option E 상세 — SPC 인테리어 전액 투자 모델</div>
+  <p>단지 입장에서 가장 매력적인 옵션입니다. 단지는 초기 투자 <strong>0원</strong>으로 카페를 열 수 있습니다. 대신 카페 운영 수익을 SPC가 인테리어 투자금을 회수할 때까지 가져갑니다.</p>
+
+  <table>
+    <thead><tr><th>항목</th><th>3,000세대 (B안 기준)</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>SPC 총 투자</td><td>머신 6,000만원 + 인테리어 6,000만원 = <strong>1억 2,000만원</strong></td><td></td></tr>
+      <tr><td>회수 기간 중 SPC 수입</td><td>SPC 수수료 542만원 + 단지 수익 316만원 = <strong>858만원/월</strong></td><td>수수료 + 단지 수익 모두 SPC</td></tr>
+      <tr><td>인테리어 회수 기간</td><td>6,000만원 ÷ 316만원 = <strong>약 19개월</strong></td><td></td></tr>
+      <tr><td>머신 감가상각 반영 시</td><td>80만원/월 차감 → 실질 수익 778만원/월</td><td></td></tr>
+      <tr><td><strong>19개월 후</strong></td><td>단지 수익 316만원/월 복귀. SPC는 수수료 542만원만 수취.</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="k">OPTION E의 핵심 가치</span>
+    단지 입대의에게 <strong>"초기 비용 0원으로 스타벅스 카페를 열 수 있다"</strong>는 메시지는 의사결정 장벽을 극단적으로 낮춥니다. 19개월 후부터는 단지에 매월 316만원이 들어오고, SPC는 그동안 머신 자산을 확보하면서 수수료 수입도 올리는 구조입니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>09 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 09 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">09</span><h2>SPC가 버는 돈 — 자산 회수와 성장 경로</h2></div>
+
+  <div class="subhead">단지별 SPC 월 수익</div>
+  <table>
+    <thead><tr><th>단지 규모</th><th>머신 대수</th><th>월 수수료 (15%)</th><th>월 감가상각</th><th>SPC 실질 수익</th><th>머신 회수</th></tr></thead>
+    <tbody>
+      <tr><td>1,700세대</td><td>1대</td><td>266만원</td><td>−40만원</td><td>+226만원</td><td>13.3개월</td></tr>
+      <tr><td>2,000세대</td><td>2대</td><td>318만원</td><td>−80만원</td><td>+238만원</td><td>25.2개월</td></tr>
+      <tr><td>3,000세대</td><td>2대</td><td>554만원</td><td>−80만원</td><td><strong>+474만원</strong></td><td><strong>12.7개월</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">누적 단지별 SPC 연간 손익</div>
+  <table>
+    <thead><tr><th>누적 단지</th><th>수수료율</th><th>월 수수료</th><th>감가상각</th><th>고정비</th><th>월 순수익</th><th>연간 순수익</th></tr></thead>
+    <tbody>
+      <tr><td>3개 (파일럿)</td><td>15%</td><td>1,138만원</td><td>−200만원</td><td>−400만원</td><td>538만원</td><td>6,456만원</td></tr>
+      <tr><td>10개</td><td>20%</td><td>4,360만원</td><td>−600만원</td><td>−400만원</td><td>3,360만원</td><td>4억 320만원</td></tr>
+      <tr><td>20개</td><td>20%</td><td>8,720만원</td><td>−1,200만원</td><td>−400만원</td><td>7,120만원</td><td><strong>8억 5,440만원</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>10 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 10 -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">10</span><h2>이게 합법인가 — 법률 검토</h2></div>
+
+  <div class="subhead">카페 수익 및 수수료</div>
+  <table>
+    <thead><tr><th>쟁점</th><th>법적 근거</th><th>결론</th></tr></thead>
+    <tbody>
+      <tr><td>카페 수익 귀속</td><td>공동주택관리법 제23조</td><td>카페 매출 전액 → 단지 집수입 계상. <strong>완전 합법</strong>.</td></tr>
+      <tr><td>위탁 사업자 선정</td><td>국토부 고시 — 500만원 이상 경쟁 입찰</td><td>SPC가 입찰 참가하여 정당하게 낙찰. 황해가 입찰 지원.</td></tr>
+      <tr><td>수수료 합법성</td><td>법정 상한선 없음. 계약 자유 원칙.</td><td>입찰 시 수수료율 명시, 입대의 의결로 확정. <strong>합법</strong>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">인테리어 비용 집행 적법성</div>
+  <table>
+    <thead><tr><th>재원</th><th>법적 근거</th><th>적용 가능성</th></tr></thead>
+    <tbody>
+      <tr><td><strong>집수입</strong></td><td>시행령 제23조 — 입대의 의결로 사용처 결정</td><td><strong>가장 안전</strong>. 카페 운영 집수입으로 인테리어 비용 분할 상환 가능.</td></tr>
+      <tr><td>장기수선충당금</td><td>법 제30조 — 공용부분 주요 시설 교체·보수</td><td>커뮤니티 시설 리모델링으로 해석 가능. 자치단체별 차이 있음.</td></tr>
+      <tr><td>SPC 전액 투자 (Option E)</td><td>위탁 계약 내 명시</td><td>단지 재원 사용 불필요. SPC가 투자 후 수익으로 환수.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">사업자 선정 입찰 절차 (약 2개월 소요)</div>
+  <table>
+    <thead><tr><th style="width:8%">단계</th><th>절차</th><th>황해 지원</th><th>소요</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>입대의 임시총회 — 카페 도입 의결</td><td>총회 안건 초안, 법률 자문</td><td>~2주</td></tr>
+      <tr><td>2</td><td>입찰 공고 (7일 이상)</td><td>공고문 작성, 게시 지도</td><td>~2주</td></tr>
+      <tr><td>3</td><td>제안서 접수 및 평가</td><td>SPC 제안서 준비, 평가 대응</td><td>~2주</td></tr>
+      <tr><td>4</td><td>입대의 의결 (낙찰 확정)</td><td>의결 자료 작성 지원</td><td>~2주</td></tr>
+      <tr><td>5</td><td>위탁 운영 계약 체결</td><td>표준 계약서 제공·검토</td><td>~1주</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>11 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- PART II DIVIDER -->
+<!-- ============================= -->
+<section class="page">
+  <div class="part-divider">
+    <div class="lbl">PART II — 개정 추가</div>
+    <h2>커뮤니티 운영사<br>편입 구조</h2>
+    <p>단순 법무 자문과 카페 위탁을 넘어, 단지 커뮤니티 전체를 운영하는 회사를 SPC로 편입하여 <strong>"단지 운영 플랫폼"</strong> 자체를 확보합니다. 2026년 4월 마포 프레스티지 자이 현장 미팅에서 확정된 방향이며, 헬리오시티 단지를 첫 레퍼런스로 합니다.</p>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- 11 - MYFIT -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">11</span><h2>마이핏(MYFIT) 사례 — 벤치마킹과 인수 타당성</h2></div>
+
+  <p class="lead">마이핏은 일반적인 카페 운영사가 아닙니다. <strong>아파트 단지 자체의 커뮤니티를 총괄 운영하는 회사</strong>입니다. 5년 넘게 대단지에서 축적한 운영 노하우를 보유하고 있으며, 단가 인상이 아닌 품질 고도화로 수익성을 끌어올리는 단계에 진입했습니다.</p>
+
+  <div class="subhead">사업 모델의 특수성</div>
+  <ul class="dash">
+    <li>카페 한 곳 운영이 아니라 <strong>단지 커뮤니티 전체</strong>(피트니스·문화·음료·커뮤니티 프로그램)를 총괄 운영</li>
+    <li>서비스 품질을 매년 업그레이드하며 <strong>1년 단위 재계약</strong> 시 인건비 상승분을 단가에 반영</li>
+    <li>초기 단지에서는 "비싸다"는 저항이 있지만, 입주자대표회의를 통해 <strong>"투자성 지출"</strong> 로 설득해 예산 편성을 이끌어냄</li>
+  </ul>
+
+  <div class="subhead">락인(Lock-in) 메커니즘</div>
+  <table>
+    <thead><tr><th style="width:8%">단계</th><th>메커니즘</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>운영 퀄리티 상승 → 입주민 만족도 상승</td></tr>
+      <tr><td>2</td><td>입주민 만족도 → 단지 브랜드 가치 상승 → <strong>집값에 반영</strong></td></tr>
+      <tr><td>3</td><td>집값에 반영되는 순간, 단지는 이 업체를 <strong>교체할 수 없는 구조</strong>가 형성 (전환비용 극대화)</td></tr>
+      <tr><td>4</td><td>결과적으로 <strong>5년 이상 장기 계약</strong>이 자연스럽게 유지됨</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">진입장벽 = 운영 노하우</div>
+  <ul class="dash">
+    <li>5년간 축적된 단지 운영 노하우 보유 — 대단지 특유의 입주민 니즈·불만 처리·프로그램 설계 역량</li>
+    <li>현재는 단순 단가 인상 단계를 지나, <strong>메뉴 개발 / 세부 관리 / 디테일 고도화</strong> 단계로 진입</li>
+    <li>재무 시뮬레이션도 "가격 인상"이 아닌 <strong>"관리 품질 고도화"</strong> 를 통한 수익성 개선 방향으로 전환</li>
+    <li>이 노하우는 신규 진입자가 단기간에 복제 불가능 → <u>인수 시 핵심 자산</u></li>
+  </ul>
+
+  <div class="callout">
+    <span class="k">인수의 전략적 의미</span>
+    SPC를 통해 확보하는 것은 <strong>"하청 업체"가 아니라 "단지 운영 플랫폼" 자체</strong> 입니다. 카페 한 점포를 추가로 위탁받는 수준이 아니라, 단지 커뮤니티 전체를 운영하는 회사를 통째로 편입하는 것이며, 이것은 WPS 카페 사업(PART I)과 결합하여 아파트 단지 B2B 시장에서 <strong>독점적 포지션</strong>을 구축하는 기반이 됩니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>12 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 12 - Deal structure -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">12</span><h2>딜 구조 — SPC 지분 투자 스킴</h2></div>
+
+  <p class="lead">마이핏 대표가 기존 회사를 정리(청산)하고, 신설 SPC로 <strong>합류·편입</strong>하는 형태입니다. SPC를 별도 설립하여 지분 투자 방식으로 결합합니다.</p>
+
+  <div class="subhead">지분 배분 (헬리오시티 편입 SPC 기준, 협의 진행 중)</div>
+  <table>
+    <thead><tr><th>주주</th><th>지분</th><th>역할·의미</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>헬리오시티 (아파트 측)</strong></td>
+        <td style="font-size:12pt"><strong>51%</strong></td>
+        <td>지배 지분. 입대의 의사결정 연결고리. 단지 레퍼런스로서 대외 신뢰도 확보.</td>
+      </tr>
+      <tr>
+        <td>법무법인 더 에이치 황해</td>
+        <td style="font-size:12pt"><strong>약 24.5%</strong></td>
+        <td>입찰·계약·법률 전반. 천상현 대표 라인. 대표이사 파견 라인 유지.</td>
+      </tr>
+      <tr>
+        <td>상대측 (구 마이핏 대표 측)</td>
+        <td style="font-size:12pt"><strong>약 24.5%</strong></td>
+        <td>5년 축적 운영 노하우. 현장 운영 총괄. 기존 마이핏 해산 후 SPC로 합류.</td>
+      </tr>
+      <tr class="total"><td>합계</td><td>100%</td><td>49%를 황해와 상대측이 <strong>50:50</strong>으로 반분하는 구조로 협의 중</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">운영·관리 주체</div>
+  <ul class="dash">
+    <li>SPC 편입 이후 단지 관리·운영은 <strong>법무법인 + 운영사 합작 측</strong>(지분 49% 연합)이 실질 담당</li>
+    <li>헬리오시티 단지에 대한 <strong>관리 권한 확보</strong> — 커뮤니티 전반(카페·피트니스·문화 프로그램·공간 운영) 통합 운영</li>
+    <li>의결 구조: 단지 51% 지배 지분이 있으나, 실무 운영권은 계약상 위임. 이해 상충 시 입대의 의결 우선.</li>
+  </ul>
+
+  <div class="subhead">거래 순서</div>
+  <table>
+    <thead><tr><th style="width:8%">단계</th><th>내용</th><th>담당</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>구 마이핏 법인 정리·청산, 핵심 인력·운영 노하우 SPC 귀속 동의</td><td>상대측</td></tr>
+      <tr><td>2</td><td>신설 SPC 설립 — 정관·주주간계약서 작성</td><td>황해 + 아파트너</td></tr>
+      <tr><td>3</td><td>헬리오시티 입대의 의결 — SPC 51% 참여, 커뮤니티 위탁 재계약</td><td>황해 주도</td></tr>
+      <tr><td>4</td><td>자산·계약 양수도 — 기존 마이핏 운영 자산·계약을 SPC로 이전</td><td>상대측 → SPC</td></tr>
+      <tr><td>5</td><td>운영 통합 — 기존 WPS 카페 SPC와 병행 관리, 시너지 설계</td><td>SPC 경영진</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="k">PART I과의 관계</span>
+    <strong>WPS 카페 SPC</strong>(아파트너 70% / 황해 30%)는 유지하되, 헬리오시티 건은 <strong>커뮤니티 운영 SPC</strong>를 별도 설립하여 편입합니다. 두 SPC는 경영진·운영 인력을 공유하며, 향후 통합 또는 지주 구조 전환 여부는 단지 확대 속도에 따라 재검토합니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>13 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 13 - Vision -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">13</span><h2>확장 비전 — 하이엔드 단지 토탈 서비스</h2></div>
+
+  <div class="subhead">헬리오시티 = 레퍼런스 케이스</div>
+  <ul class="dash">
+    <li>국내 최대급 대단지 — <strong>9,510세대</strong> 관리 실적 확보 시, 시장 내 독보적 포트폴리오 구축</li>
+    <li>이후 타 대단지 영업 시 결정적 <u>레퍼런스</u>로 활용 — "헬리오시티가 선택한 운영사"라는 포지션</li>
+    <li>하이엔드 단지 의사결정자(입대의·관리사무소)에게 동급 단지 사례는 가장 강력한 설득 자산</li>
+  </ul>
+
+  <div class="subhead">확장 방향성 — 원스톱 단지 토탈 서비스</div>
+  <table>
+    <thead><tr><th style="width:28%">서비스 축</th><th>담당</th><th>제공 가치</th></tr></thead>
+    <tbody>
+      <tr><td><strong>법무·자문</strong></td><td>법무법인 더 에이치 황해</td><td>하자 소송, 입대의 자문, 집단 등기, 공용부 분쟁</td></tr>
+      <tr><td><strong>커뮤니티 운영</strong></td><td>편입 SPC (구 마이핏 노하우)</td><td>피트니스·문화 프로그램·음료·공간 운영 총괄</td></tr>
+      <tr><td><strong>F&amp;B — 스타벅스 WPS</strong></td><td>WPS 카페 SPC</td><td>단지 내 스타벅스 커피 — 3,300원 아메리카노</td></tr>
+      <tr><td><strong>플랫폼</strong></td><td>아파트너 앱</td><td>주문·쿠폰·관리비 정산·커뮤니티 예약 통합</td></tr>
+      <tr><td><strong>부가 서비스</strong></td><td>Chat APT / 아파트집사</td><td>입주민 AI 상담, 관리사무소 업무 자동화</td></tr>
+    </tbody>
+  </table>
+
+  <p>이 5개 축을 한 단지에 동시 투입할 수 있는 사업자는 현재 없습니다. <strong>법무 × 커뮤니티 운영 × F&amp;B × 플랫폼</strong> 네 축이 결합된 모델은 하이엔드 단지에서 강력한 차별화 요소가 됩니다.</p>
+
+  <div class="subhead">단계적 확장 시나리오</div>
+  <table>
+    <thead><tr><th>단계</th><th>타깃</th><th>핵심 전략</th></tr></thead>
+    <tbody>
+      <tr><td>1 — 레퍼런스 확보</td><td>헬리오시티 (9,510세대)</td><td>커뮤니티 운영 인수 + WPS 카페 동시 입점. 수익성보다 운영 안정성·입주민 만족도 지표 확보 우선.</td></tr>
+      <tr><td>2 — 하이엔드 확장</td><td>반포·잠실·여의도 대단지 5개</td><td>헬리오시티 데이터 근거로 "토탈 서비스" 영업. 황해 200개 수임 단지 네트워크 우선 접근.</td></tr>
+      <tr><td>3 — 프리미엄 표준화</td><td>3,000세대 이상 하이엔드 30개</td><td>운영 매뉴얼·SLA 표준화, 아파트너 앱 내 "프리미엄 커뮤니티" 상품 런칭.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="k">장기 포지션</span>
+    최종적으로 아파트 단지 B2B 시장에서 <strong>법무·운영·F&amp;B·플랫폼을 한 그룹이 보유</strong>하는 모델은 국내 최초입니다. 하이엔드 단지가 요구하는 모든 서비스를 단일 창구에서 제공할 수 있는 사업자 지위를 확보하는 것이 v6.0의 핵심 목표입니다.
+  </div>
+
+  <div class="pagefoot"><span>WPS SPC 설립 기획서 v6.0</span><span>14 / 14</span></div>
+</section>
+
+<!-- ============================= -->
+<!-- 14 - Roadmap -->
+<!-- ============================= -->
+<section class="page">
+  <div class="section-head"><span class="no">14</span><h2>추진 로드맵 (MYFIT 편입 반영)</h2></div>
+
+  <table>
+    <thead><tr><th style="width:8%">단계</th><th style="width:18%">기간</th><th style="width:30%">목표</th><th>주요 내용</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2026 Q2</td>
+        <td>WPS 카페 SPC 설립 + 파일럿</td>
+        <td>법인 설립(자본금 1억). 오진양행 파트너십. 1호 단지(소규모)부터 순차 진입. Option B 또는 E 적용.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>2026 Q2–Q3</td>
+        <td><strong>커뮤니티 운영 SPC 설립 + 헬리오시티 편입</strong></td>
+        <td>구 마이핏 청산·자산 양수도. 헬리오시티 입대의 51% 참여 의결. 황해 24.5% / 상대측 24.5%.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>2026 Q3–Q4</td>
+        <td>앱 연동 + 10개 단지</td>
+        <td>아파트너 앱 커피 주문 MVP 출시. 파일럿 데이터 기반 모델 검증. 수수료 15%→20% 전환.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>2027 Q1–Q2</td>
+        <td>20개 단지 달성 + 하이엔드 레퍼런스</td>
+        <td>단지 흑자 사례 공개로 신규 영입 가속. 헬리오시티 커뮤니티 운영 성과 공개. 네슬레 코리아 직접 계약 협상.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>2027 Q3~</td>
+        <td>30~50개 단지 + 토탈 서비스 런칭</td>
+        <td>국내 아파트 F&amp;B 독점 플랫폼 지위 확보. <strong>법무 × 커뮤니티 운영 × F&amp;B × 플랫폼</strong> 통합 상품 표준화.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="subhead">2026 Q2–Q3 병렬 실행 과제</div>
+  <ol class="num">
+    <li>WPS 카페 SPC 법인 설립 (아파트너 70% / 황해 30%) — 자본금 1억</li>
+    <li>커뮤니티 운영 SPC 법인 설립 (헬리오시티 51% / 황해 24.5% / 상대측 24.5%)</li>
+    <li>구 마이핏 해산 및 자산·인력·계약 SPC로 이관 — 상대측 책임, 황해 법률 지원</li>
+    <li>헬리오시티 입대의 임시총회 소집 — 커뮤니티 위탁 재계약 의결</li>
+    <li>WPS 카페 1호 파일럿 단지 입찰 공고 및 계약 체결</li>
+    <li>아파트너 앱 커피 주문 + 커뮤니티 예약 MVP 기획 착수</li>
+  </ol>
+
+  <div class="callout">
+    <span class="k">성공 지표 (2027 상반기 목표)</span>
+    WPS 카페 20개 단지 / 커뮤니티 운영 편입 단지 1~3개 (헬리오시티 + 확장 1~2) / SPC 합산 월 순수익 7,000만원 이상 / 하이엔드 단지 토탈 서비스 표준 계약서 v1.0 확정.
+  </div>
+
+  <p class="footnote">※ 본 문서는 v5.6(2026-03-20) 기반으로 2026-04-24 마포 프레스티지 자이 현장 미팅 결과를 반영하여 PART II(11~13장) 및 로드맵을 개정한 v6.0입니다. PART I(1~10장)은 v5.6 내용을 유지합니다.</p>
+</section>
+
+</body>
+</html>
